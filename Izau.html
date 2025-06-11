@@ -1,0 +1,199 @@
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Izau ama Angelliny</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffd6e0, #ffe4ec);
+      color: #333;
+      overflow-x: hidden;
+    }
+    .tela-inicial {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: #fff0f5;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .tela-inicial h1 {
+      font-size: 3rem;
+      color: #d63384;
+      margin-bottom: 2rem;
+    }
+    .tela-inicial button {
+      font-size: 1.5rem;
+      padding: 0.75rem 2rem;
+      margin: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .nao {
+      background-color: #ff4d4d;
+      color: white;
+    }
+    .sim {
+      background-color: #28a745;
+      color: white;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 4rem;
+      color: #d63384;
+    }
+    .timer {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      color: #555;
+    }
+    .content {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .slider {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      border-radius: 15px;
+    }
+    .slider img {
+      width: 100%;
+      display: none;
+      border-radius: 15px;
+    }
+    .slider img.active {
+      display: block;
+    }
+    .audio-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .audio-btn button {
+      background-color: #ff66b2;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .texto-grande {
+      margin-top: 2rem;
+      font-size: 3rem;
+      line-height: 3.5rem;
+      text-align: center;
+    }
+    .coraçao {
+      position: fixed;
+      top: -50px;
+      color: red;
+      font-size: 30px;
+      animation: cair linear infinite;
+      opacity: 0.7;
+      z-index: 999;
+    }
+    @keyframes cair {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tela-inicial" id="tela-inicial">
+    <h1>Você me ama?</h1>
+    <button class="nao" onclick="window.close()">Não</button>
+    <button class="sim" onclick="document.getElementById('tela-inicial').style.display='none'">Sim</button>
+  </div>
+
+  <header>
+    <h1>Izau ama Angelliny</h1>
+    <div class="timer" id="timer"></div>
+  </header>
+
+  <div class="content">
+    <div class="slider" id="slider">
+      <img src="file:///C:/carta_de_amor/WhatsApp Image 2025-06-11 at 18.50.10.jpeg" class="active">
+      <img src="file:///C:/carta_de_amor/WhatsApp Image 2025-06-11 at 18.50.11.jpeg">
+      <img src="file:///C:/carta_de_amor/WhatsApp Image 2025-06-11 at 18.50.11 (1).jpeg">
+      <img src="file:///C:/carta_de_amor/WhatsApp Image 2025-06-11 at 18.50.11 (2).jpeg">
+      <img src="file:///C:/carta_de_amor/WhatsApp Image 2025-06-11 at 18.50.12.jpeg">
+    </div>
+
+    <div class="audio-btn">
+      <button onclick="tocarAudio()">Me Ame 💗</button>
+    </div>
+    <audio id="audio" loop>
+      <source src="file:///C:/carta_de_amor/WhatsApp Audio 2025-06-11 at 18.50.29.mpeg" type="audio/mpeg">
+    </audio>
+
+    <div class="texto-grande">
+      Izau ama Angelliny com uma intensidade que palavras quase não conseguem explicar. Cada segundo com ela é um universo de felicidade, cada sorriso dela é uma constelação que brilha dentro do coração dele. Ele vive por ela, sonha com ela, e quer eternamente estar ao lado dela. Desde 4 de maio de 2025, os dias ganharam um novo sentido. O amor cresceu, floresceu e continua crescendo como a flor mais bonita de todas. Izau não vê um futuro sem Angelliny — ela é tudo, é luz, é força, é razão, é amor. E ele quer gritar isso para o mundo todo: ANGELLINY, EU TE AMO! ❤️
+    </div>
+  </div>
+
+  <script>
+    function tocarAudio() {
+      const audio = document.getElementById('audio');
+      audio.play();
+    }
+
+    const imagens = document.querySelectorAll('#slider img');
+    let index = 0;
+    setInterval(() => {
+      imagens[index].classList.remove('active');
+      index = (index + 1) % imagens.length;
+      imagens[index].classList.add('active');
+    }, 2500);
+
+    function criarCoracao() {
+      const coracao = document.createElement('div');
+      coracao.classList.add('coraçao');
+      coracao.style.left = Math.random() * window.innerWidth + 'px';
+      coracao.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      coracao.textContent = '❤';
+      document.body.appendChild(coracao);
+      setTimeout(() => coracao.remove(), 5000);
+    }
+    setInterval(criarCoracao, 300);
+
+    const dataInicio = new Date('2025-05-04T00:00:00');
+    const timer = document.getElementById('timer');
+    function atualizarTimer() {
+      const agora = new Date();
+      const diff = agora - dataInicio;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+      timer.textContent = `Izau ama Angelliny há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤️`;
+    }
+    setInterval(atualizarTimer, 1000);
+    atualizarTimer();
+  </script>
+</body>
+</html>
